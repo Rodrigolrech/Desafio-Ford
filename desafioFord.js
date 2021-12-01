@@ -1,4 +1,4 @@
-const VIN = '1';
+const VIN = '1HGCM82633A004352';
 const CONVERT_PAIR = 2;
 const CONVERT_ODD = 6;
 
@@ -66,7 +66,7 @@ const convertLowerChar = (char) => {
 const backToChar = (encrypted) => {
   let encryptedArray = [];
   for(let i =0; i < encrypted.length; i++) {
-    encryptedArray.push(String.fromCharCode(encrypted[i]))
+    encryptedArray.push(String.fromCharCode(parseInt(encrypted[i])))
   }
   return encryptedArray.join('');
 }
@@ -86,7 +86,6 @@ const criptoVin = (vin) => {
   return backToChar(encrypted);
 }
 const encrypted = criptoVin(VIN);
-console.log(criptoVin(VIN));
 
  // função para reverter numeros
 const revertNumber = (number) => {
@@ -99,7 +98,6 @@ const revertNumber = (number) => {
     cripto = CONVERT_ODD;
   }
   if (numberToChange - cripto >= 48 ) {
-    console.log(numberToChange - cripto);
     return numberToChange - cripto;
   } else {
     const value = numberToChange - 48;
@@ -145,7 +143,6 @@ const decripted = (vinEncrypted) => {
   encryptedInASC = turnVinInASC(vinEncrypted);
   let encrypted = [];
   for (let i = 0; i< vinInASC.length; i++) {
-    console.log(vinInASC[i]);
     if (parseInt(vinInASC[i]) <= 57) {
       encrypted.push(revertNumber(vinInASC[i]));
     } else if (parseInt(vinInASC[i]) <= 90) {
@@ -157,4 +154,5 @@ const decripted = (vinEncrypted) => {
   return backToChar(encrypted);
 }
 
-console.log(decripted(encrypted))
+console.log(encrypted);
+console.log(decripted(encrypted));
