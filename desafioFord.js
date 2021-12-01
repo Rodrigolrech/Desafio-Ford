@@ -50,7 +50,7 @@ const convertCapsChar = (char) => {
 const convertLowerChar = (char) => {
   let charToChange = parseInt(char);
   let cripto;
-  if (char % 2 === 0) {
+  if (charToChange % 2 === 0) {
     cripto = CONVERT_PAIR;
   } else {
     cripto = CONVERT_ODD;
@@ -125,7 +125,7 @@ const revertCapsChar = (char) => {
 const revertLowerChar = (char) => {
   let charToChange = parseInt(char);
   let cripto;
-  if (char % 2 === 0) {
+  if (charToChange % 2 === 0) {
     cripto = CONVERT_PAIR;
   } else {
     cripto = CONVERT_ODD;
@@ -142,13 +142,13 @@ const revertLowerChar = (char) => {
 const decripted = (vinEncrypted) => {
   encryptedInASC = turnVinInASC(vinEncrypted);
   let encrypted = [];
-  for (let i = 0; i< vinInASC.length; i++) {
-    if (parseInt(vinInASC[i]) <= 57) {
-      encrypted.push(revertNumber(vinInASC[i]));
-    } else if (parseInt(vinInASC[i]) <= 90) {
-      encrypted.push(revertCapsChar(vinInASC[i]));
+  for (let i = 0; i< encryptedInASC.length; i++) {
+    if (parseInt(encryptedInASC[i]) <= 57) {
+      encrypted.push(revertNumber(encryptedInASC[i]));
+    } else if (parseInt(encryptedInASC[i]) <= 90) {
+      encrypted.push(revertCapsChar(encryptedInASC[i]));
     } else {
-      encrypted.push(revertLowerChar(vinInASC[i]));
+      encrypted.push(revertLowerChar(encryptedInASC[i]));
     }
   }
   return backToChar(encrypted);
